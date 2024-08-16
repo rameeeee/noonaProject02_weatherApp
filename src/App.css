@@ -1,0 +1,83 @@
+body {
+  height: 100vh;
+  background: url('https://static.vecteezy.com/system/resources/previews/004/401/750/original/seamless-pattern-of-weather-elements-with-rubber-boots-and-umbrella-cute-doodle-style-repeat-background-of-sun-wind-rain-snow-clouds-hot-and-cold-temperature-vector.jpg') 50% 50% no-repeat;
+  background-size: cover;
+}
+
+.bg_area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.bg_area.atmosphere {
+  background: url(../public/image/atmosphere.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
+.bg_area.clouds {
+  background: url(../public/image/clouds.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
+.bg_area.clear {
+  background: url(../public/image/clear.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
+.bg_area.drizzle {
+  background: url(../public/image/drizzle.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
+.bg_area.rain {
+  background: url(../public/image/rain.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
+.bg_area.thunderstorm {
+  background: url(../public/image/thunderstorm.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
+.bg_area.snow {
+  background: url(../public/image/snow.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
+
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.weather-box {
+  padding: 50px;
+  margin-bottom: 30px;
+  background: rgba(13, 110, 253, 0.9);
+  border-radius: 30px;
+  color: #fff;
+}
+
+.icon_box {
+  width: 30px;
+  display: inline-block;
+}
+
+.icon_box img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.btn {
+  margin: 4px;
+}
+.btn_wrap {
+  max-width: 400px;
+  text-align: center;
+}
+.btn-outline-primary {
+  background: #fff !important;
+}
+.btn-outline-primary:hover {
+  color: #0d6efd !important;
+}
