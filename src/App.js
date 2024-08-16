@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import WeatherBox from './component/WeatherBox';
 import WeatherButton from './component/WeatherButton';
 import ClipLoader from "react-spinners/ClipLoader";
@@ -22,7 +22,7 @@ function App() {
 
   
 
-  const getCurrentLocation = () => {
+  const getCurrentLocation = useCallback(() => {
     // 1-1. 현재 위치 가져오기
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
@@ -48,9 +48,7 @@ function App() {
       .catch(error => console.log(error));
       */
     });
-
-    
-  }
+  },[])
 
   const getWeatherByCurrentLocation = async(lat, lon) => {
     try {
@@ -106,7 +104,7 @@ function App() {
       setLoading(true);
       getWeatherByCity();
     }
-  }, [city]);
+  }, [city, getCurrentLocation]);
 
   
 
