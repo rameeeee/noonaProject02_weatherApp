@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import WeatherBox from './component/WeatherBox';
 import WeatherButton from './component/WeatherButton';
 import ClipLoader from "react-spinners/ClipLoader";
+import ForecastBox from './component/ForecastBox';
 
 
 // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
@@ -15,6 +16,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 function App() {
   let [loading, setLoading] = useState(true);
   const [weather, setWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
   const [city, setCity] = useState('');
   const cities = ['london', 'New Zealand', 'melbourne', 'chiang mai', 'tailand', 'seoul']
   const [apiError, setApiError] = useState("");
@@ -29,6 +31,7 @@ function App() {
       const lon = position.coords.longitude;
       console.log('현재 위치', lat, lon);
       getWeatherByCurrentLocation(lat, lon);
+      getForecast(lat, lon);
       // 1-2. 현재 위치 날씨 가져오기
       /** 검색하여 찾은 내용
        * https://stackoverflow.com/questions/45244284/how-to-get-the-weather-conditions-based-on-the-user-s-current-gps-location
@@ -37,7 +40,7 @@ function App() {
       // 작성해 본 코드 (결과 노출 o)
       /*
       const apiKey = '18daf91688e53d81ea9bb5a2acb1b9cc'
-      const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey;
+      const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey;
       
       fetch(apiUrl)
       .then(response => response.json())
@@ -94,6 +97,20 @@ function App() {
       setLoading(false);
     }
   }
+  const getForecast = async(lat, lon) => {
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=18daf91688e53d81ea9bb5a2acb1b9cc&units=metric`
+      const response = await fetch(url)
+      const data = await response.json()
+      console.log('forecast data', data)
+      setForecast(data)
+      setLoading(false)
+    } catch(error) {
+      console.log(error);
+      setApiError(error.message);
+      setLoading(false);
+    }
+  }
 
 
   useEffect(() => {
@@ -119,7 +136,7 @@ function App() {
         )
         : (
           <div className="container">
-            <WeatherBox weather={weather}/>
+            <WeatherBox weather={weather} forecast={forecast} city={city}/>
             <WeatherButton cities={cities} setCity={setCity} city={city}/>
           </div>
         )

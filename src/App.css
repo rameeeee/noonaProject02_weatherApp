@@ -1,9 +1,8 @@
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: url('https://static.vecteezy.com/system/resources/previews/004/401/750/original/seamless-pattern-of-weather-elements-with-rubber-boots-and-umbrella-cute-doodle-style-repeat-background-of-sun-wind-rain-snow-clouds-hot-and-cold-temperature-vector.jpg') 50% 50% no-repeat;
   background-size: cover;
 }
-
 .bg_area {
   position: absolute;
   top: 0;
@@ -47,23 +46,124 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 0 !important;
+  max-width: 100% !important;
 }
 
 .weather-box {
-  padding: 50px;
-  margin-bottom: 30px;
+  min-width: 400px;
+  padding: 30px;
+  margin-bottom: 6px;
   background: rgba(13, 110, 253, 0.9);
   border-radius: 30px;
   color: #fff;
+  text-align: center;
 }
 
-.icon_box {
-  width: 30px;
+.city_name {
+  font-weight: 700;
+}
+.desc {
+  font-size: 16px;
+}
+.info {
+  position: relative;
   display: inline-block;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+/* .info::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background: url(../public/image/icon01.png) 50% 50% no-repeat;
+  background-size: 100% auto;
+} */
+
+.add_info + .add_info {
+  margin-top: 2px;
+}
+.add_info .text01,
+.add_info .text02 {
+  position: relative;
+  display: inline-block;
+  padding-left: 25px;
+}
+.add_info .text02 {
+  padding-left: 27px;
+}
+.add_info .text01::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background: url(../public/image/icon02.png) 50% 50% no-repeat;
+  background-size: 100% auto;
+}
+.add_info .text02::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background: url(../public/image/icon03.png) 50% 50% no-repeat;
+  background-size: 100% auto;
+}
+.icon_box {
+  display: block;
+  width: 80px;
+  margin: 0 auto;
 }
 
 .icon_box img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.forecast-box {
+  width: 100%;
+  overflow: hidden;
+}
+.forecast_list_wrap {
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  overflow: auto;
+}
+.forecast_list {
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.forecast_item {
+  background: rgba(255, 255, 255, 0.5);
+  list-style: none;
+  width: calc(33.33% - 10px);
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  text-align: center;
+}
+.forecast_icon_box {
+  width: 80px;
+}
+.forecast_icon_box img {
   width: 100%;
   object-fit: contain;
 }
@@ -73,6 +173,7 @@ body {
 }
 .btn_wrap {
   max-width: 400px;
+  padding: 0 10px;
   text-align: center;
 }
 .btn-outline-primary {
@@ -80,4 +181,24 @@ body {
 }
 .btn-outline-primary:hover {
   color: #0d6efd !important;
+}
+
+
+@media screen and (max-width: 760px) {
+  .weather-box {
+    min-width: 270px;
+  }
+  .forecast_list_wrap {
+    width: 100%;
+    height: auto;
+  }
+  .forecast_list {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    max-width: 270px;
+  }
+  .forecast_item {
+    flex-shrink: 0;
+    width: 120px;
+  }
 }
