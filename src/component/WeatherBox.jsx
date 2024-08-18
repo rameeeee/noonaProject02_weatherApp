@@ -13,7 +13,7 @@ const WeatherBox = ({weather, forecast, city}) => {
           </span>
           {weather?.weather[0].description}
         </h3>
-        <h2 className="info">{weather?.main.temp}C / {(weather?.main.temp * 1.8 + 32).toFixed(2)}F</h2>
+        <h2 className="info">{weather?.main.temp}C / {(weather?.main.temp * 1.8 + 32).toFixed(1)}F</h2>
         <div className="add_info">
           <span className="text01">Humidity: {weather?.main.humidity}%</span>
         </div>

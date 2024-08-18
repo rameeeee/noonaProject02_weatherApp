@@ -1,7 +1,7 @@
 body {
   min-height: 100vh;
-  background: url('https://static.vecteezy.com/system/resources/previews/004/401/750/original/seamless-pattern-of-weather-elements-with-rubber-boots-and-umbrella-cute-doodle-style-repeat-background-of-sun-wind-rain-snow-clouds-hot-and-cold-temperature-vector.jpg') 50% 50% no-repeat;
-  background-size: cover;
+  /* background: url('https://static.vecteezy.com/system/resources/previews/004/401/750/original/seamless-pattern-of-weather-elements-with-rubber-boots-and-umbrella-cute-doodle-style-repeat-background-of-sun-wind-rain-snow-clouds-hot-and-cold-temperature-vector.jpg') 50% 50% no-repeat;
+  background-size: cover; */
 }
 .bg_area {
   position: absolute;
@@ -131,10 +131,25 @@ body {
 }
 
 .forecast-box {
+  position: relative;
   width: 100%;
+  width: 400px;
+  padding: 10px 0;
+  border-radius: 30px;
   overflow: hidden;
 }
+.forecast-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(13, 110, 253, 0.9);
+}
 .forecast_list_wrap {
+  position: relative;
+  z-index: 1;
   width: 400px;
   height: 300px;
   margin: 0 auto;
@@ -162,6 +177,7 @@ body {
 }
 .forecast_icon_box {
   width: 80px;
+  margin: 0 auto;
 }
 .forecast_icon_box img {
   width: 100%;
@@ -187,6 +203,14 @@ body {
 @media screen and (max-width: 760px) {
   .weather-box {
     min-width: 270px;
+  }
+  .forecast-box {
+    width: 100%;
+    padding: 0;
+    border-radius: 0;
+  }
+  .forecast-box::after {
+    display: none;
   }
   .forecast_list_wrap {
     width: 100%;

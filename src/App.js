@@ -4,7 +4,6 @@ import { useEffect, useState, useCallback } from 'react';
 import WeatherBox from './component/WeatherBox';
 import WeatherButton from './component/WeatherButton';
 import ClipLoader from "react-spinners/ClipLoader";
-import ForecastBox from './component/ForecastBox';
 
 
 // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
